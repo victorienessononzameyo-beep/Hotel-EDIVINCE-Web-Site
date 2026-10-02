@@ -1,0 +1,8 @@
+{
+  "name": "Hôtel EDIVINCE A.N Kribi",
+  "description": "Site officiel de l'Hôtel EDIVINCE A.N à Kribi, Cameroun. Réservation directe de chambres, guide touristique de Kribi et Assistant IA intelligent 24h/24.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

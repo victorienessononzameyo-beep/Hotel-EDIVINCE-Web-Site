@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sub: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-cta: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-ocean: #0A2342;
+  --color-sand: #F4EBE1;
+  --color-palm: #4D6B50;
+  --color-gold: #D4AF37;
+  --color-wood: #705E52;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Print Specific Rules for Restaurant Menu */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    color: #0A2342 !important;
+    font-size: 11pt;
+    line-height: 1.3;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide every non-printable element on the screen */
+  header, 
+  nav, 
+  footer, 
+  #floating-action-bar, 
+  .no-print, 
+  button, 
+  input, 
+  .fixed, 
+  #restaurant-view > section, 
+  #restaurant-view > div:not(#printable-container) {
+    display: none !important;
+  }
+
+  /* Reveal and format the printable menu container */
+  #printable-container {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 10mm 15mm !important;
+    background: #ffffff !important;
+    color: #0A2342 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  #printable-container * {
+    color: #0A2342 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .print-header {
+    border-bottom: 2pt solid #D4AF37 !important;
+    padding-bottom: 8mm !important;
+    margin-bottom: 8mm !important;
+    text-align: center !important;
+  }
+
+  .print-category-header {
+    border-bottom: 1pt solid #D4AF37 !important;
+    padding-bottom: 2mm !important;
+    margin-top: 6mm !important;
+    margin-bottom: 4mm !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .print-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 3mm !important;
+  }
+
+  .print-gold-text {
+    color: #8C7322 !important; /* Slightly darker gold for crisp black/white or color print legibility */
+    font-weight: 700 !important;
+  }
+
+  .print-footer {
+    border-top: 1.5pt solid #D4AF37 !important;
+    margin-top: 10mm !important;
+    padding-top: 4mm !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm 12mm 10mm;
+  }
+}
+
+/* Custom styles for smooth experience */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4EBE1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0A2342;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
