@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageSquare, X, Send, Landmark, HelpCircle, Bot, Sparkles } from "lucide-react";
 import { ChatMessage } from "../types";
+import { apiService } from "../utils/apiService";
 
 interface AIChatBotProps {
   isOpen: boolean;
@@ -48,41 +49,25 @@ export default function AIChatBot({ isOpen, onClose }: AIChatBotProps) {
     try {
       const chatHistory = [...messages, userMsg].map(m => ({
         role: m.role,
-        content: m.content
+        content: m.content,
+        timestamp: m.timestamp
       }));
 
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: chatHistory })
-      });
-      const data = await response.json();
-
-      if (response.ok && data.reply) {
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: data.reply,
-            timestamp: new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
-          }
-        ]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: "Pardon, j'ai rencontré un petit problème technique pour formuler ma réponse. Veuillez réessayer ou contacter notre réception directement par téléphone.",
-            timestamp: new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
-          }
-        ]);
-      }
-    } catch (err) {
+      const reply = await apiService.sendChatMessage(chatHistory);
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "Désolé, impossible de joindre le service de conciergerie IA. Veuillez vérifier votre connexion internet.",
+          content: reply,
+          timestamp: new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
+        }
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: "Désolé, j'ai rencontré un contretemps. Vous pouvez joindre notre réception directement sur WhatsApp au +237 670 49 71 40 ou par appel au +237 696 82 66 09.",
           timestamp: new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
         }
       ]);

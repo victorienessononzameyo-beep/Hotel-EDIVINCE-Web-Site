@@ -24,6 +24,7 @@ import {
   Key
 } from "lucide-react";
 import SupabaseSchema from "./SupabaseSchema";
+import { apiService } from "../utils/apiService";
 
 const AUTHORIZED_EMAILS = [
   "victorienessononzameyo@gmail.com",
@@ -69,22 +70,12 @@ export default function BIDashboard() {
   const fetchStatsAndRooms = async () => {
     try {
       setLoading(true);
-      const [statsRes, roomsRes] = await Promise.all([
-        fetch("/api/stats"),
-        fetch("/api/rooms")
-      ]);
-
-      if (statsRes.ok && roomsRes.ok) {
-        const statsData = await statsRes.json();
-        const roomsData = await roomsRes.json();
-        setStats(statsData);
-        setPmsRooms(roomsData);
-        setError("");
-      } else {
-        setError("Impossible de charger les données du PMS & CRM.");
-      }
-    } catch (err) {
-      setError("Erreur réseau lors de la récupération des rapports hôteliers.");
+      const data = await apiService.getStatsAndRooms();
+      setStats(data.stats);
+      setPmsRooms(data.rooms);
+      setError("");
+    } catch {
+      setError("Erreur lors de la récupération des rapports hôteliers.");
     } finally {
       setLoading(false);
     }
@@ -185,18 +176,10 @@ export default function BIDashboard() {
   const handleUpdateStatus = async (bookingId: string, newStatus: "confirmed" | "canceled" | "pending") => {
     try {
       setUpdatingId(bookingId);
-      const res = await fetch(`/api/bookings/${bookingId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: newStatus })
-      });
-      if (res.ok) {
-        await fetchStatsAndRooms();
-      } else {
-        alert("Erreur lors de la mise à jour du statut");
-      }
-    } catch (err) {
-      alert("Erreur réseau");
+      await apiService.updateBookingStatus(bookingId, newStatus);
+      await fetchStatsAndRooms();
+    } catch {
+      alert("Erreur lors de la mise à jour");
     } finally {
       setUpdatingId(null);
     }
@@ -205,19 +188,9 @@ export default function BIDashboard() {
   const handleUpdateRoomStatus = async (roomNumber: string, status: "libre" | "occupe" | "nettoyage" | "maintenance") => {
     try {
       setUpdatingRoomNo(roomNumber);
-      const res = await fetch(`/api/rooms/${roomNumber}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status })
-      });
-      if (res.ok) {
-        // Reload rooms list
-        const roomsRes = await fetch("/api/rooms");
-        if (roomsRes.ok) {
-          setPmsRooms(await roomsRes.json());
-        }
-      }
-    } catch (err) {
+      const updatedRooms = await apiService.updateRoom(roomNumber, { status });
+      setPmsRooms(updatedRooms);
+    } catch {
       console.error("Failed to update room status");
     } finally {
       setUpdatingRoomNo(null);
@@ -226,18 +199,9 @@ export default function BIDashboard() {
 
   const handleUpdateRoomHousekeeper = async (roomNumber: string, housekeeperName: string) => {
     try {
-      const res = await fetch(`/api/rooms/${roomNumber}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ housekeeper: housekeeperName })
-      });
-      if (res.ok) {
-        const roomsRes = await fetch("/api/rooms");
-        if (roomsRes.ok) {
-          setPmsRooms(await roomsRes.json());
-        }
-      }
-    } catch (err) {
+      const updatedRooms = await apiService.updateRoom(roomNumber, { housekeeper: housekeeperName });
+      setPmsRooms(updatedRooms);
+    } catch {
       console.error("Failed to update housekeeper");
     }
   };

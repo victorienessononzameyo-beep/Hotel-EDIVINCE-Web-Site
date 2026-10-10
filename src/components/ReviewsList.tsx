@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Review } from "../types";
 import { Star, MessageSquare, ShieldCheck, Heart, User, Check, Sparkles } from "lucide-react";
+import { apiService } from "../utils/apiService";
 
 export default function ReviewsList() {
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -18,13 +19,10 @@ export default function ReviewsList() {
   const fetchReviews = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/reviews");
-      const data = await res.json();
-      if (res.ok) {
-        setReviews(data);
-      }
-    } catch (err) {
-      console.error("Failed to load reviews");
+      const data = await apiService.getReviews();
+      setReviews(data);
+    } catch {
+      console.warn("Utilisation des avis locaux");
     } finally {
       setLoading(false);
     }
@@ -50,22 +48,16 @@ export default function ReviewsList() {
     setError("");
 
     try {
-      const res = await fetch("/api/reviews", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-      const result = await res.json();
-
-      if (res.ok && result.success) {
+      const result = await apiService.submitReview(formData);
+      if (result.success) {
         setSuccess(true);
         setFormData({ name: "", rating: 5, comment: "", roomType: "Chambre Confort" });
         await fetchReviews();
         setTimeout(() => setSuccess(false), 5000);
       } else {
-        setError(result.error || "Une erreur est survenue.");
+        setError("Une erreur est survenue lors de l'enregistrement de l'avis.");
       }
-    } catch (err) {
+    } catch {
       setError("Impossible d'enregistrer votre avis.");
     } finally {
       setSubmitting(false);

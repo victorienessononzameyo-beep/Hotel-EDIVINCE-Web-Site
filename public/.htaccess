@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Handle CORS preflight
+  RewriteCond %{REQUEST_METHOD} OPTIONS
+  RewriteRule ^(.*)$ $1 [R=200,L]
+
+  # Route API requests to PHP handler if available
+  RewriteRule ^api/book/?$ api/book.php [QSA,L]
+  RewriteRule ^api/bookings/?$ api/bookings.php [QSA,L]
+  RewriteRule ^api/reviews/?$ api/reviews.php [QSA,L]
+  RewriteRule ^api/rooms/?$ api/rooms.php [QSA,L]
+  RewriteRule ^api/stats/?$ api/stats.php [QSA,L]
+
+  # Existing files and directories serve directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Security & Cache headers
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, POST, PATCH, OPTIONS"
+  Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>

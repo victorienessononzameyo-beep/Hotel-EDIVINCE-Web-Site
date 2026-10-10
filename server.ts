@@ -12,6 +12,17 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// CORS & Hostinger reverse-proxy compatibility
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // Path to data file
 const DATA_FILE = path.resolve("./data.json");
 
