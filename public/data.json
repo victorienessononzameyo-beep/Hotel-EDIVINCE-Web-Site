@@ -1,0 +1,309 @@
+{
+  "bookings": [
+    {
+      "id": "B-204",
+      "guestName": "Jean-Pierre Mvondo",
+      "guestEmail": "jp.mvondo@gmail.com",
+      "guestPhone": "+237 696 82 66 09",
+      "roomType": "confort",
+      "checkIn": "2026-07-05",
+      "checkOut": "2026-07-10",
+      "guestsCount": 1,
+      "totalPrice": 275000,
+      "status": "confirmed",
+      "segment": "Tourisme",
+      "createdAt": "2026-07-25T07:35:13.525Z"
+    },
+    {
+      "id": "B-501",
+      "guestName": "Marcelle Ngono",
+      "guestEmail": "m.ngono@hotmail.fr",
+      "guestPhone": "+237 670 49 71 40",
+      "roomType": "junior",
+      "checkIn": "2026-07-15",
+      "checkOut": "2026-07-22",
+      "guestsCount": 2,
+      "totalPrice": 700000,
+      "status": "confirmed",
+      "segment": "Famille",
+      "createdAt": "2026-07-27T07:35:13.525Z"
+    },
+    {
+      "id": "B-306",
+      "guestName": "Christian Dupont",
+      "guestEmail": "c.dupont@entreprise.fr",
+      "guestPhone": "+33 6 12 34 56 78",
+      "roomType": "premium",
+      "checkIn": "2026-07-01",
+      "checkOut": "2026-07-04",
+      "guestsCount": 2,
+      "totalPrice": 225000,
+      "status": "confirmed",
+      "segment": "Business",
+      "createdAt": "2026-07-28T07:35:13.525Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "R-101",
+      "name": "Petit Bozard et son equipes",
+      "rating": 5,
+      "comment": "L'accueil est merveilleux, digne d'un palace tropical. Nous avons adoré déguster nos crevettes géantes et plats d'exception près de la piscine de relaxation de l'hôtel !",
+      "roomType": "Suite Junior",
+      "date": "2026-08-22"
+    },
+    {
+      "id": "R-102",
+      "name": "Vanister ENAMA",
+      "rating": 5,
+      "comment": "Un séjour d'affaires parfait. Le Wi-Fi Starlink est d'une rapidité incroyable et la salle de conférence était impeccablement équipée pour notre séminaire.",
+      "roomType": "Chambre Prestige",
+      "date": "2026-08-22"
+    },
+    {
+      "id": "R-103",
+      "name": "MAALHOX le VIBEUR",
+      "rating": 5,
+      "comment": "Vue splendide sur l'océan Atlantique et la Marina de Kribi ! La chambre est immense, le service en chambre avec champagne en mer était inoubliable.",
+      "roomType": "Suite Vue Mer",
+      "date": "2026-08-22"
+    },
+    {
+      "id": "R-104",
+      "name": "Victorien ESSONO NZAMEYO",
+      "rating": 5,
+      "comment": "Des souvenirs inoubliables gravés grâce aux magnifiques prises de vue par drone et à l'attention exceptionnelle de toute l'équipe de l'Hôtel EDIVINCE !",
+      "roomType": "Suite Prestige",
+      "date": "2026-08-22"
+    }
+  ],
+  "rooms": [
+    {
+      "number": "101",
+      "category": "confort",
+      "status": "libre",
+      "housekeeper": "Marie M.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "102",
+      "category": "confort",
+      "status": "occupe",
+      "housekeeper": "Florence N.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "103",
+      "category": "confort",
+      "status": "nettoyage",
+      "housekeeper": "Marie M.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "104",
+      "category": "confort",
+      "status": "libre",
+      "housekeeper": "Florence N.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "201",
+      "category": "prestige",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "202",
+      "category": "prestige",
+      "status": "libre",
+      "housekeeper": "Thérèse B.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "203",
+      "category": "prestige",
+      "status": "occupe",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "204",
+      "category": "prestige",
+      "status": "libre",
+      "housekeeper": "Thérèse B.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "205",
+      "category": "prestige",
+      "status": "maintenance",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "206",
+      "category": "prestige",
+      "status": "occupe",
+      "housekeeper": "Thérèse B.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "207",
+      "category": "prestige",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "208",
+      "category": "prestige",
+      "status": "nettoyage",
+      "housekeeper": "Thérèse B.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "209",
+      "category": "prestige",
+      "status": "occupe",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "210",
+      "category": "prestige",
+      "status": "libre",
+      "housekeeper": "Thérèse B.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "211",
+      "category": "prestige",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "301",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "302",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "303",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Florence N.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "304",
+      "category": "premium",
+      "status": "occupe",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "305",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "306",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Florence N.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "307",
+      "category": "premium",
+      "status": "nettoyage",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "308",
+      "category": "premium",
+      "status": "occupe",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "309",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Florence N.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "310",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "311",
+      "category": "premium",
+      "status": "libre",
+      "housekeeper": "Alice O.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "312",
+      "category": "premium",
+      "status": "maintenance",
+      "housekeeper": "Florence N.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "401",
+      "category": "twin",
+      "status": "libre",
+      "housekeeper": "Marie M.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "501",
+      "category": "junior",
+      "status": "occupe",
+      "housekeeper": "Thérèse B.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "502",
+      "category": "junior",
+      "status": "libre",
+      "housekeeper": "Florence N.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "601",
+      "category": "prestige-suite",
+      "status": "libre",
+      "housekeeper": "Marie M.",
+      "lastCleaned": "2026-07-29"
+    },
+    {
+      "number": "701",
+      "category": "ocean-suite",
+      "status": "occupe",
+      "housekeeper": "Thérèse B.",
+      "lastCleaned": "2026-07-29"
+    }
+  ],
+  "stats": {
+    "viewsCount": 386
+  }
+}

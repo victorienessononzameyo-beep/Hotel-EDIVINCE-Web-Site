@@ -18,7 +18,6 @@ export default function Header({ currentView, onViewChange }: HeaderProps) {
     { id: "guide", label: "Guide kribi" },
     { id: "services", label: "Services" },
     { id: "restaurant", label: "Restaurant" },
-    { id: "admin", label: "Admin." },
   ];
 
   // Helper to check active state considering legacy aliases

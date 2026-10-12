@@ -410,7 +410,6 @@ export default function App() {
               <li><button onClick={() => setCurrentView("guide")} class="hover:text-gold transition-colors cursor-pointer">Guide kribi</button></li>
               <li><button onClick={() => setCurrentView("services")} class="hover:text-gold transition-colors cursor-pointer">Services</button></li>
               <li><button onClick={() => setCurrentView("restaurant")} class="hover:text-gold transition-colors cursor-pointer">Restaurant</button></li>
-              <li><button onClick={() => setCurrentView("admin")} class="hover:text-gold transition-colors cursor-pointer flex items-center gap-1">🔒 <span>Admin.</span></button></li>
             </ul>
           </div>
 
